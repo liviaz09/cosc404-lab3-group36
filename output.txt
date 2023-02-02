@@ -1,0 +1,251 @@
+Enter the file name to manipulate:Products.txt
+ 
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 1
+ProductID       ProductName     SupplierID      CategoryID
+17      Alice Mutton    7       6
+3       Aniseed Syrup   1       2
+18      Carnarvon Tigers        7       8
+1       Chai    1       1
+2       Chang   1       1
+4       Chef Anton's Cajun Seasoning    2       2
+5       Chef Anton's Gumbo Mix  2       2
+15      Genen Shouyu    6       2
+6       Grandma's Boysenberry Spread    3       2
+10      Ikura   4       8
+13      Konbu   6       8
+9       Mishi Kobe Niku 4       6
+8       Northwoods Cranberry Sauce      3       2
+16      Pavlova 7       3
+11      Queso Cabrales  5       4
+12      Queso Manchego La Pastora       5       4
+19      Teatime Chocolate Biscuits      8       3
+14      Tofu    6       7
+7       Uncle Bob's Organic Dried Pears 3       7
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 2
+Please enter the key to locate the record: 8
+ProductID       ProductName     SupplierID      CategoryID
+8       Northwoods Cranberry Sauce      3       2
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 3
+Enter the record:22     Terry   55      2
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 3
+Enter the record:33     Lawrence        44      9
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 1
+ProductID       ProductName     SupplierID      CategoryID
+17      Alice Mutton    7       6
+3       Aniseed Syrup   1       2
+18      Carnarvon Tigers        7       8
+1       Chai    1       1
+2       Chang   1       1
+4       Chef Anton's Cajun Seasoning    2       2
+5       Chef Anton's Gumbo Mix  2       2
+15      Genen Shouyu    6       2
+6       Grandma's Boysenberry Spread    3       2
+10      Ikura   4       8
+13      Konbu   6       8
+9       Mishi Kobe Niku 4       6
+8       Northwoods Cranberry Sauce      3       2
+16      Pavlova 7       3
+11      Queso Cabrales  5       4
+12      Queso Manchego La Pastora       5       4
+19      Teatime Chocolate Biscuits      8       3
+14      Tofu    6       7
+7       Uncle Bob's Organic Dried Pears 3       7
+22      Terry   55      2
+33      Lawrence        44      9
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 4
+Please enter the key to locate the record to delete: 1
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 1
+ProductID       ProductName     SupplierID      CategoryID
+17      Alice Mutton    7       6
+3       Aniseed Syrup   1       2
+18      Carnarvon Tigers        7       8
+2       Chang   1       1
+4       Chef Anton's Cajun Seasoning    2       2
+5       Chef Anton's Gumbo Mix  2       2
+15      Genen Shouyu    6       2
+6       Grandma's Boysenberry Spread    3       2
+10      Ikura   4       8
+13      Konbu   6       8
+9       Mishi Kobe Niku 4       6
+8       Northwoods Cranberry Sauce      3       2
+16      Pavlova 7       3
+11      Queso Cabrales  5       4
+12      Queso Manchego La Pastora       5       4
+19      Teatime Chocolate Biscuits      8       3
+14      Tofu    6       7
+7       Uncle Bob's Organic Dried Pears 3       7
+22      Terry   55      2
+33      Lawrence        44      9
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 5
+Enter key of record to update: 8
+Enter column number of field to update: 2
+Enter value of field to update: NCS
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 1
+ProductID       ProductName     SupplierID      CategoryID
+17      Alice Mutton    7       6
+3       Aniseed Syrup   1       2
+18      Carnarvon Tigers        7       8
+2       Chang   1       1
+4       Chef Anton's Cajun Seasoning    2       2
+5       Chef Anton's Gumbo Mix  2       2
+15      Genen Shouyu    6       2
+6       Grandma's Boysenberry Spread    3       2
+10      Ikura   4       8
+13      Konbu   6       8
+9       Mishi Kobe Niku 4       6
+8       NCS     3       2
+16      Pavlova 7       3
+11      Queso Cabrales  5       4
+12      Queso Manchego La Pastora       5       4
+19      Teatime Chocolate Biscuits      8       3
+14      Tofu    6       7
+7       Uncle Bob's Organic Dried Pears 3       7
+22      Terry   55      2
+33      Lawrence        44      9
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 5
+Enter key of record to update: 2
+Enter column number of field to update: 2
+Enter value of field to update: Change Special Company Export
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: 1
+ProductID       ProductName     SupplierID      CategoryID
+17      Alice Mutton    7       6
+3       Aniseed Syrup   1       2
+18      Carnarvon Tigers        7       8
+2       Change Special Company Export   1       1
+4       Chef Anton's Cajun Seasoning    2       2
+5       Chef Anton's Gumbo Mix  2       2
+15      Genen Shouyu    6       2
+6       Grandma's Boysenberry Spread    3       2
+10      Ikura   4       8
+13      Konbu   6       8
+9       Mishi Kobe Niku 4       6
+8       NCS     3       2
+16      Pavlova 7       3
+11      Queso Cabrales  5       4
+12      Queso Manchego La Pastora       5       4
+19      Teatime Chocolate Biscuits      8       3
+14      Tofu    6       7
+7       Uncle Bob's Organic Dried Pears 3       7
+22      Terry   55      2
+33      Lawrence        44      9
+
+
+Select one of these options:
+  1 - Read and Output All Lines
+  2 - Return Record with Key
+  3 - Insert a New Record
+  4 - Delete Record with Key
+  5 - Update Record with Key
+  F - Specify Different Data File
+  X - Exit application
+Your choice: X
+Press any key to continue . . .

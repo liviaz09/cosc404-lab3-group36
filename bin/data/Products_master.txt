@@ -1,0 +1,20 @@
+ProductID	ProductName	SupplierID	CategoryID		
+17	Alice Mutton	7	6		
+3	Aniseed Syrup	1	2		
+18	Carnarvon Tigers	7	8		
+1	Chai	1	1		
+2	Chang	1	1		
+4	Chef Anton's Cajun Seasoning	2	2		
+5	Chef Anton's Gumbo Mix	2	2		
+15	Genen Shouyu	6	2		
+6	Grandma's Boysenberry Spread	3	2		
+10	Ikura	4	8		
+13	Konbu	6	8		
+9	Mishi Kobe Niku	4	6		
+8	Northwoods Cranberry Sauce	3	2		
+16	Pavlova	7	3		
+11	Queso Cabrales	5	4		
+12	Queso Manchego La Pastora	5	4		
+19	Teatime Chocolate Biscuits	8	3		
+14	Tofu	6	7		
+7	Uncle Bob's Organic Dried Pears	3	7
