@@ -111,7 +111,24 @@ public class TableHandler
 	public String readAll() throws SQLException
 	{
 		// TODO: Write this method
-		return "";
+		StringBuffer buffer = new StringBuffer();
+		String record = null;
+		String EOL = "\n";
+
+		try{
+			//record = raFile.readUTF();
+			while(raFile.getFilePointer() < raFile.length()) {
+				String input = raFile.readLine().trim();
+				buffer.append(input+EOL);
+			 }
+			 record = buffer.toString();
+		}catch(IOException e){
+			if(e != null){
+				throw new SQLException(e.getMessage());
+			}
+		}
+
+		return record;
 	}
 
 /**************************************************************************************
@@ -123,7 +140,28 @@ public class TableHandler
 	public String findRecord(String key) throws SQLException
 	{
 		// TODO: Write this method
-		return "";
+		StringBuffer buffer = new StringBuffer();
+		String EOL = "\n";
+		String result = ""; 
+
+		try{
+			raFile.seek(0);
+			long current = 0;
+			while(current < raFile.length()) {
+				String record = raFile.readLine();
+				if(record.equals(key)){
+					result = columnNames + EOL + record + EOL;
+				}else{
+					result = columnNames + EOL;
+				}
+				current = raFile.getFilePointer();
+			}
+		}catch(IOException e){
+			if(e != null){
+				throw new SQLException(e.getMessage());
+			}
+		}
+		return result;
 	}
 
 /**************************************************************************************
@@ -136,7 +174,26 @@ public class TableHandler
 	private long findStartOfRecord(String key) throws SQLException
 	{
 		// TODO: Write this method
-		return 0;
+		long pos = 0;
+
+		try{
+			raFile.seek(0);
+			long current = 0;
+			while(current < raFile.length()) {
+				String record = raFile.readLine();
+				if(record.equals(key)){
+					pos = raFile.getFilePointer();
+				}else{
+					pos = 0;
+				}
+			}
+
+		}catch(IOException e){
+			if(e != null){
+				throw new SQLException(e.getMessage());
+			}
+		}
+		return pos;
 	}
 
 /*************************************************************************************
