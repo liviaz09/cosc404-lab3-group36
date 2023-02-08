@@ -33,6 +33,19 @@ public class TextDBStatement implements Statement {
 	@Override
 	public ResultSet executeQuery(String query) throws SQLException {				
 		// TODO: Complete this method.
+		// resultset variable initialisation
+		ResultSet rs1= null;
+		// Creating array to store parts of the query
+		String[] qp = query.split(" ");
+		// condition for 'SELECT ALL'
+		if (qp[0].equals("SELECT") && qp[1].equals("ALL")){
+			rs1 = getResultSet();
+		}
+		//condition for only 'SELECT KEY'
+		else if(qp[0].equals("SELECT")){
+			// initialise key in the query at position 1
+			int k = Integer.parseInt(qp[1]);
+		}
 		return null;	
 	}
 

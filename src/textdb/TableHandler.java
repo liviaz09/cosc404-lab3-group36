@@ -139,30 +139,24 @@ public class TableHandler
 **************************************************************************/
 	public String findRecord(String key) throws SQLException
 	{
+		
 		// TODO: Write this method
-		StringBuffer buffer = new StringBuffer();
-		String EOL = "\n";
-		String result = ""; 
+		try {
+			// calling find start of record function to help with the output and return -1 is no output is obtained
+			long position = findStartOfRecord(key);
 
-		try{
-			raFile.seek(0);
-			long current = 0;
-			while(current < raFile.length()) {
-				String record = raFile.readLine();
-				if(record.equals(key)){
-					result = columnNames + EOL + record + EOL;
-				}else{
-					result = columnNames + EOL;
-				}
-				current = raFile.getFilePointer();
+			//chechking new points with the findStartOfRecord()
+			if(position > 0){
+				//new position
+				raFile.seek(position);
+				return columnNames + "\n" + raFile.readLine().trim() + "\n";
 			}
-		}catch(IOException e){
-			if(e != null){
-				throw new SQLException(e.getMessage());
-			}
+		} catch (IOException e) {
+			throw new SQLException("IO Exception");
 		}
-		return result;
-	}
+		return columnNames + "\n";
+		}
+
 
 /**************************************************************************************
 *	findStartOfRecord(String key)	takes parameter key holding the key of the record to find
@@ -174,26 +168,25 @@ public class TableHandler
 	private long findStartOfRecord(String key) throws SQLException
 	{
 		// TODO: Write this method
-		long pos = 0;
-
 		try{
 			raFile.seek(0);
-			long current = 0;
-			while(current < raFile.length()) {
-				String record = raFile.readLine();
-				if(record.equals(key)){
-					pos = raFile.getFilePointer();
-				}else{
-					pos = 0;
-				}
+			// read first line and data before tab
+			String realine = raFile.readLine();
+			//realine is used to read minimum number of lines to find firstKey
+			String firstKey = realine.substring(0,realine.indexOf('\t'));
+			// check if key is the right one
+			while(!key.equals(firstKey)){
+			// if the firstkey is not the right one, move on to the next line in the file
+			realine = raFile.readLine();
+			// if record not found
+			if(realine == null)
+				return -1;
+				firstKey = realine.substring(0,realine.indexOf('\t'));
 			}
-
-		}catch(IOException e){
-			if(e != null){
-				throw new SQLException(e.getMessage());
-			}
+			return raFile.getFilePointer()-("\n"+realine+"\n").getBytes().length;
+		}catch(IOException a){
+			throw new SQLException("IO Exception");
 		}
-		return pos;
 	}
 
 /*************************************************************************************
