@@ -218,6 +218,38 @@ public class TableHandler
 	public int deleteRecord(String key) throws SQLException
 	{
 		// TODO: Write this method
+		try {
+			long position = findStartOfRecord(key);
+			// check if the record exists
+			if(position > 0){
+			// the next record to the recordd being deleted is also found
+			raFile.seek(position);
+			raFile.readLine();
+			// empty string for a new file
+			String nfile="\n";
+			String stringnow = raFile.readLine();
+			//the record is overwritten
+			while(stringnow != null){
+
+				nfile+= stringnow.trim()+"\n";
+				stringnow = raFile.readLine();
+			}
+			// keeping only the useful bytes in the file and removing the others
+			char newBys[] = nfile.toCharArray();
+			raFile.setLength(position-1+newBys.length);
+			//Keep a count of newBys 
+			int count=0;
+			raFile.seek(position-1);
+			while(count <newBys.length){
+				raFile.writeByte(newBys[count]);
+				count+=1;
+			}
+			return 1;
+		}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new SQLException("IO Exception");
+		}
 		return 0;
 	}
 
@@ -228,11 +260,20 @@ public class TableHandler
 *
 *					Return 1 if record successfully inserted, 0 otherwise.
 * Catch any IOException and re-throw it as a SQLException if any error occurs.
+ * @throws IOException
 **************************************************************************/
 	public int insertRecord(String record) throws SQLException
 	{
 		// TODO: Write this method
-		return 0;
+		try {
+			//go to the end of the file and insert a record at the end of the file
+			raFile.seek(raFile.length());
+			raFile.writeBytes(record.trim() + "\n");
+			return 1;
+		} catch (IOException e) {
+			// TODO: handle exception
+			throw new SQLException("IO Exception");
+		}
 	}
 
 
