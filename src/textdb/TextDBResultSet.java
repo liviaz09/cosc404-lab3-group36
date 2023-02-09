@@ -21,7 +21,10 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Map;
+
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.IterableResult;
 
 public class TextDBResultSet implements ResultSet {
 
@@ -46,6 +49,7 @@ public class TextDBResultSet implements ResultSet {
 	@Override
 	public boolean next() throws SQLException {		
 		// TODO: Complete this method.
+		
 		// Advance to next row					
 			
 		// Parse the column contents into array columns	
