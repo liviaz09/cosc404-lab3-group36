@@ -272,6 +272,7 @@ public class TableHandler
 			return 1;
 		} catch (IOException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			throw new SQLException("IO Exception");
 		}
 	}
