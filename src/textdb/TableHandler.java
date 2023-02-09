@@ -217,7 +217,6 @@ public class TableHandler
 **************************************************************************/
 	public int deleteRecord(String key) throws SQLException
 	{
-		// TODO: Write this method
 		try {
 			long position = findStartOfRecord(key);
 			// check if the record exists
@@ -268,13 +267,15 @@ public class TableHandler
 		try {
 			//go to the end of the file and insert a record at the end of the file
 			raFile.seek(raFile.length());
-			raFile.writeBytes(record.trim() + "\n");
+			
+			raFile.writeBytes( record.trim() );
+			
 			return 1;
 		} catch (IOException e) {
 			// TODO: handle exception
-			e.printStackTrace();
 			throw new SQLException("IO Exception");
 		}
+	
 	}
 
 
