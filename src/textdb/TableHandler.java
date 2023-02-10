@@ -16,6 +16,7 @@ Helper method - long findStartOfRecord(String key) to find byte offset from star
 
 import java.io.*;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 
 public class TableHandler
@@ -107,15 +108,18 @@ public class TableHandler
 *				Each record should be on its own line (add a "\n" to end of each record).
 *				Note: You do not have to parse each record.  Just append the whole line (make sure to trim() input).
 *				Catch any IOException and re-throw it as a SQLException if any error occurs.
+ * @throws IOException
 *************************************************************************************/
 	public String readAll() throws SQLException
 	{
+		
 		// TODO: Write this method
 		StringBuffer buffer = new StringBuffer();
 		String record = null;
 		String EOL = "\n";
 
 		try{
+			raFile.seek(0);
 			//record = raFile.readUTF();
 			while(raFile.getFilePointer() < raFile.length()) {
 				String input = raFile.readLine().trim();
@@ -203,6 +207,72 @@ public class TableHandler
 	public int updateRecord(String key, int col, String value) throws SQLException
 	{
 		// TODO: Write this method
+		try{
+			// we set the pointer to the key of the record and chekc if the record exists
+			long pointK = findStartOfRecord(key);
+			int newCol = col-1;
+			if(pointK > 0){
+				// go to the record and divide it in readable and changable items
+				raFile.seek(pointK);
+				String[] newRec = raFile.readLine().split("\t");
+				String oldRec = newRec[newCol];
+				String setRec="";
+				// value of new record will be changed 
+				newRec[newCol] = value;
+				//set setRec to the new and updated record
+				for(int i=0;i<newRec.length;i++){
+					setRec = setRec+newRec[i]+"\t";
+				}
+				//write the whole file again and add new line
+				if(oldRec.length()<value.length()){
+					setRec = setRec+"\n";
+					String str = raFile.readLine();
+					while(str != null){
+					setRec = setRec+str.trim()+"\n";
+					str = raFile.readLine();
+					}
+					raFile.seek(pointK);
+
+					//clearing all the data from the file 
+					long fileLen = raFile.length()-pointK;
+					long count = 0;
+					for(count=0;count<=fileLen;count++){
+						raFile.writeByte(' ');
+					}
+					//to remove additional bytes from the file convert string to char and set the pointer and keep a check on the count 
+					int c=0;
+					char newVal[]= setRec.toCharArray();
+					raFile.setLength(pointK+newVal.length);
+					raFile.seek(pointK);
+					// this loop resets the pointer and rewrites the bytes with new values
+					while(c<newVal.length){
+						raFile.writeByte(newVal[c]);
+						c++;
+					}
+				}// to compansate for the loss of bytes repeat the same procedure above
+				else{
+					int k =0;
+					byte b=0;
+					char newVal[] = setRec.toCharArray();
+					//set pointer
+					raFile.seek(pointK);
+					while(b != 0xA){
+						if(k < newVal.length)
+						raFile.writeByte(newVal[k]);
+						else
+						raFile.writeByte(' ');
+						k=raFile.readByte();
+						// set pointer after getting the current position of the pointer from the file
+						raFile.seek(raFile.getFilePointer()-1);
+						k++;
+					}
+				}
+				return 1;
+			}
+		}
+	catch(IOException e){
+		throw new SQLException("IO Exception");
+	}
 		return 0;
 	}	
 
@@ -261,22 +331,21 @@ public class TableHandler
 * Catch any IOException and re-throw it as a SQLException if any error occurs.
  * @throws IOException
 **************************************************************************/
-	public int insertRecord(String record) throws SQLException
-	{
-		// TODO: Write this method
-		try {
-			//go to the end of the file and insert a record at the end of the file
-			raFile.seek(raFile.length());
-			
-			raFile.writeBytes( record.trim() );
-			
-			return 1;
-		} catch (IOException e) {
-			// TODO: handle exception
-			throw new SQLException("IO Exception");
-		}
-	
+public int insertRecord(String record) throws SQLException
+{
+	// TODO: Write this method
+	try {
+		if (record==null)
+			return 0;
+		//go to the end of the file and insert a record at the end of the file
+		raFile.seek(raFile.length());
+		raFile.writeBytes(record.trim() + "\n");
+		return 1;
+	} catch (IOException e) {
+		// TODO: handle exception
+		throw new SQLException("IO Exception");
 	}
+}
 
 
 
