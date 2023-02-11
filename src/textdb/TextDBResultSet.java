@@ -22,8 +22,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
+
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.IterableResult;
 
 public class TextDBResultSet implements ResultSet {
 
