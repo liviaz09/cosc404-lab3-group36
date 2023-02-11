@@ -20,9 +20,11 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.junit.jupiter.params.shadow.com.univocity.parsers.common.IterableResult;
 
@@ -39,20 +41,28 @@ public class TextDBResultSet implements ResultSet {
 		// TODO: Complete this method.
 		
 		// Parse all results into an ArrayList for easier retrieval		
-		
-		// First row is the row of column names
-		
-		// Set up result rows
-		
+		String [] array = result.split(" ");
+		ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(array));
+
+		for(String s: arrayList){
+			// First row is the row of column names
+			for(int j = 0; j < columns.length; j++){
+				System.out.println(columnNames[j]);
+			}
+			// Set up result rows
+			System.out.println(s);
+		}		
 	}
 	
 	@Override
 	public boolean next() throws SQLException {		
 		// TODO: Complete this method.
-		
+
 		// Advance to next row					
-			
+		
 		// Parse the column contents into array columns	
+		getMetaData();
+		
 		return false;
 	}
 
